@@ -1,22 +1,33 @@
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+// const { UserModel } = require('../models/user.model');
 require('dotenv').config();
 
-const auth = (req, res, next) => {
-    try {
-        const token = req.headers.authorization;
+
+//auth middleware
+const auth = (req,res,next) => {
+    const token = req.headers.authorization;
+    // console.log(token);
+    try{
         jwt.verify(token, process.env.tokenKey, async (err, decoded) => {
-            if (decoded) {
-                req.body.userId = decoded.userId;
-                req.body.userName = decoded.userName;
-                next() ;
+            if(decoded){
+                const { userId, userName } = decoded;
+                // console.log(decoded);
+                // const user = await UserModel.findOne({_id: userId});
+                req.body.userId = userId;
+                req.body.userName = userName;
+                next();
             } else {
-                res.status(400).json({msg: "Invalid Token"});
+                res.status(400).json({msg: "Login first!"})
             }
-        });
-    } catch(err) {
-        res.status(500).json({"Internal Server Error": err});
+        })
+    }
+    catch(err){
+        res.status(500).json({msg: 'Error from Auth-Middleware', err})
     }
 }
 
-module.exports = { auth }
+
+//exporting auth
+module.exports = {
+    auth
+}

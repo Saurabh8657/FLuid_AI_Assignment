@@ -1,28 +1,44 @@
-const express = require("express");
-const cors = require("cors")
-const { connectDB } = require("./db");
-const { userRouter } = require("./routes/user.router");
-const { tasksRouter } = require("./routes/tasks.router");
+const express = require('express');
+const cors = require('cors');
+const { userRouter } = require('./routes/user.route');
+const { connectionDB } = require('./config/db');
+const { taskRouter } = require('./routes/task.route');
+const PORT = 8080;
 
+
+
+//initializing the app
 const app = express();
-app.use(cors())
-app.use(express.json()) ;
-app.use(express.text()) ;
-app.use("/users", userRouter) ;
-app.use("/tasks", tasksRouter) ;
 
-app.get("/", (req, res) => {
-    res.status(200).send("Hello World")
+
+
+//middlewares
+app.use(express.json());
+app.use(express.text());
+app.use(cors());
+app.use('/users', userRouter);
+app.use('/tasks', taskRouter);
+
+
+
+//routes
+app.get('/', (req, res) => {
+    res.status(200).json({msg: 'Welcome to the backend od Task Manager App'})
 })
 
 
-const PORT = 8080;
+
+
+
+
+//listening to the port
 app.listen(PORT, async () => {
-    try {
-        await connectDB;
-        console.log("Connected to DB")
-        console.log(`Server is running on ` + `http://localhost:8080`)
-    } catch (error) {
-        console.log(error)
+    try{
+        await connectionDB;
+        console.log(`Listening on port ${PORT}`);
+        console.log(`Database connected successfully`);
+    }
+    catch(err){
+        console.log(err);
     }
 })
