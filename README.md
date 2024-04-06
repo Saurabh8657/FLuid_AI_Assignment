@@ -30,7 +30,22 @@ To get started with the API, follow the instructions below.
 
 ## Register
 
-**Endpoint:** `POST http://localhost:8080/users/register`
+- **POST http://localhost:8080/users/register**
+  - Description: Register a new user.
+  - Request Body:
+    ```json
+    {
+      "username": "string",
+      "email": "string",
+      "password": "string"
+    }
+    ```
+  - Response:
+    - `200 OK`: User successfully registered.
+    - `400 Bad Request`: Password hashing failed.
+    - `500 Internal Server Error`: Internal server error.
+
+<!-- **Endpoint:** `POST http://localhost:8080/users/register`
 
 **Description:** Register a new user.
 
@@ -42,7 +57,7 @@ To get started with the API, follow the instructions below.
 **Response:**
 - `200 OK`: User successfully registered.
 - `400 Bad Request`: Password hashing failed.
-- `500 Internal Server Error`: Internal server error.
+- `500 Internal Server Error`: Internal server error. -->
 
 ## Login
 
