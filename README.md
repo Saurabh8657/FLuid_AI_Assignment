@@ -75,7 +75,7 @@ To get started with the API, follow the instructions below.
 
 ### Task Routes
 
-#### Get All Tasks
+## Get All Tasks
 
 **Endpoint:** `GET http://localhost:8080/tasks/`
 
@@ -88,7 +88,7 @@ To get started with the API, follow the instructions below.
 - `200 OK`: Returns tasks for the authenticated user.
 - `500 Internal Server Error`: Internal server error.
 
-#### Get Task by ID
+## Get Task by ID
 
 **Endpoint:** `GET http://localhost:8080/tasks/:id`
 
@@ -104,7 +104,7 @@ To get started with the API, follow the instructions below.
 - `200 OK`: Returns the task with the provided ID.
 - `500 Internal Server Error`: Internal server error.
 
-#### Add New Task
+## Add New Task
 
 **Endpoint:** `POST http://localhost:8080/tasks/add`
 
@@ -124,7 +124,7 @@ To get started with the API, follow the instructions below.
 - `200 OK`: New task added successfully.
 - `500 Internal Server Error`: Internal server error.
 
-#### Update Task
+## Update Task
 
 **Endpoint:** `PATCH http://localhost:8080/tasks/update/:id`
 
@@ -147,7 +147,7 @@ To get started with the API, follow the instructions below.
 - `200 OK`: Task updated successfully.
 - `500 Internal Server Error`: Internal server error.
 
-#### Delete Task
+## Delete Task
 
 **Endpoint:** `DELETE http://localhost:8080/tasks/delete/:id`
 
