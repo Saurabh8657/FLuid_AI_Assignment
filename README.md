@@ -28,9 +28,7 @@ To get started with the API, follow the instructions below.
 
 ### User Routes
 
-## Register
-
-- **POST http://localhost:8080/users/register**
+- **Register POST http://localhost:8080/users/register**
   - Description: Register a new user.
   - Request Body:
     ```json
