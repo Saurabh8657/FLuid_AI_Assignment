@@ -3,13 +3,14 @@ import { Input, VStack, Text, Box, useToast, Button } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { baseURL } from "../urls";
 export default function SignupPage() {
   const toast = useToast() ;
   const [registerData, setRegisterData] = useState({ userName: "", email: "", pass: "", role: ""});
   const handleSignup = () => {
     console.log(registerData);
     axios
-      .post(`http://localhost:8080/users/register`, registerData)
+      .post(`${baseURL}/register`, registerData)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
 

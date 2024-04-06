@@ -3,13 +3,14 @@ import { useToast } from '@chakra-ui/react'
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { baseURL, usersURL } from "../urls";
 export default function LoginPage() {
   const [ loginData, setLoginData ] = useState({email: "", pass: ""})
   const toast = useToast()
   const navigate = useNavigate() ;
   const handleLogin = () => {
     console.log(loginData)
-    axios.post(`http://localhost:8080/users/login`, loginData)
+    axios.post(`${usersURL}/login`, loginData)
     .then(res => {
       console.log(res)
       localStorage.setItem("token", res.data.token)

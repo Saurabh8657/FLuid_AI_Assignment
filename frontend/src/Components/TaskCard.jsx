@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { baseURL } from "../urls";
 const tablebodyStyle = {
     padding: "8px",
     border: "1px solid #ddd",
@@ -8,14 +9,14 @@ const tablebodyStyle = {
 const TaskCard = ({ item }) => {
     const [ task, setTask ] = useState(item) ;
     const axiosInstance = axios.create({
-        baseURL: 'http://localhost:8080/tasks/', // your API base URL
+        baseURL: `${baseURL}/tasks/`, // your API base URL
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `${localStorage.getItem("token")}` // Set the Authorization header with the token
         }
       });
     const handleDelete = () => {
-        axiosInstance.delete(`http://localhost:8080/tasks/delete/${task._id}`)
+        axiosInstance.delete(`${baseURL}/tasks/delete/${task._id}`)
         .then(res => {
           console.log(res) ;
         })
@@ -28,7 +29,7 @@ const TaskCard = ({ item }) => {
         if(task.priority === "low") task.priority = "medium"
         else if(task.priority === "medium") task.priority = "high"
         else task.priority = "low"
-        axiosInstance.patch(`http://localhost:8080/tasks/update/${task._id}`, task)
+        axiosInstance.patch(`${baseURL}/tasks/update/${task._id}`, task)
         .then(res => {
           console.log(res) ;
         })
@@ -41,7 +42,7 @@ const TaskCard = ({ item }) => {
         if(task.status === "pending") task.status = "inProgress"
         else if(task.status === "inProgress") task.status = "completed"
         else task.status = "pending"
-        axiosInstance.patch(`http://localhost:8080/tasks/update/${task._id}`, task)
+        axiosInstance.patch(`${baseURL}/tasks/update/${task._id}`, task)
         .then(res => {
           console.log(res) ;
         })
