@@ -28,7 +28,7 @@ To get started with the API, follow the instructions below.
 
 ### User Routes
 
-#### Register
+## Register
 
 **Endpoint:** `POST http://localhost:8080/users/register`
 
@@ -44,7 +44,7 @@ To get started with the API, follow the instructions below.
 - `400 Bad Request`: Password hashing failed.
 - `500 Internal Server Error`: Internal server error.
 
-#### Login
+## Login
 
 **Endpoint:** `POST http://localhost:8080/users/login`
 
@@ -59,7 +59,7 @@ To get started with the API, follow the instructions below.
 - `400 Bad Request`: Password dehashing failed.
 - `500 Internal Server Error`: Internal server error.
 
-#### Logout
+## Logout
 
 **Endpoint:** `POST http://localhost:8080/users/logout`
 
